@@ -4,6 +4,7 @@ Welcome to a smart, explainable ML-powered real estate valuation app built using
 
 > 🚀 Live Repo: [github.com/ace2016/real-estate-app](https://github.com/ace2016/real-estate-app)
 
+## **NOTE:** *The model training code is not attached to this repo, I will upload that at a later date. Alongside the enriched dataset of 1M records.*
 ---
 
 ## 🔍 Core Features
@@ -78,6 +79,4 @@ pip install -r requirements.txt
 # 4. Run the Streamlit app
 streamlit run app.py
 
----
 
-## **NOTE:** *The model training code is not attached to this repo, I will upload that at a later date. Alongside the enriched dataset of 1M records.*
