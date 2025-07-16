@@ -27,8 +27,9 @@ Welcome to a smart, explainable ML-powered real estate valuation app built using
 
 **Dataset:** UK House Price data (1995–1999), geocoded and enriched with OSM data.
 
-*Folder structure*
-.
+---
+### 🗁 Folder structure
+
 ├── app.py                      # Main Streamlit application
 ├── real_estate_model.pkl       # Trained ML pipeline (preprocessor + model)
 ├── district_trends.csv         # Generated using the rolling mean
