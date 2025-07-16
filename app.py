@@ -17,12 +17,11 @@ import io # For in-memory file handling for downloads
 # Set Matplotlib to use the 'Agg' backend to prevent issues with Streamlit
 plt.switch_backend('Agg')
 
-# --- Streamlit Page Configuration (MUST BE THE FIRST STREAMLIT COMMAND) ---
+# --- Streamlit Page Configuration ---
 st.set_page_config(page_title="London Property Price App", layout="wide", page_icon="🏠")
 
 # RapidAPI Key and Host for UK Property Data API
-# IMPORTANT: For a production app, store API keys securely (e.g., environment variables)
-RAPIDAPI_KEY = "YOUR_RAPIDAPI_KEY_HERE"  # Replace with your actual RapidAPI key
+RAPIDAPI_KEY = st.secrets["api"]["rapidapi_key"]  # RapidAPI key
 RAPIDAPI_HOST = "uk-property-data.p.rapidapi.com"
 
 # Define log file path
@@ -159,7 +158,7 @@ custom_css = """
 </style>
 """
 
-# 1. Load model and metadata
+# Load model and metadata
 try:
     # Ensure 'real_estate_model.pkl' and 'model_metadata.json' are in the same directory
     # as this script or provide the full path.
@@ -179,7 +178,7 @@ except Exception as e:
     st.stop()
 
 
-# 2. Helper functions
+# Helper functions
 
 def format_postcode_for_display(postcode_raw):
     """
@@ -342,12 +341,12 @@ def make_prediction(input_data: dict):
     df['distance_to_center'] = df.apply(lambda row: geodesic((row['latitude'], row['longitude']), center).km, axis=1)
 
     # Initialize fallback status for this prediction run.
-    # This will always be False as there's no dynamic district trend data to fall back on.
+    # This will always be False as there is no dynamic district trend data to fall back on.
     st.session_state['district_fallback_used'] = False 
 
     # 'district_price_trend' is taken directly from input_data, which is 500000 by default.
     # No dynamic lookup for district trend from CSV.
-    df['district_price_trend'] = input_data.get("district_price_trend", 0) # Ensure it's present, default to 0 if not in input_data
+    df['district_price_trend'] = input_data.get("district_price_trend", 0) # Ensure its present, default to 0 if not in input_data
 
     # Ensure all expected features are present, fill with 0 if missing
     # This is crucial if your model was trained on a specific set of features
@@ -355,7 +354,7 @@ def make_prediction(input_data: dict):
         if feat not in df.columns:
             df[feat] = 0
     
-    # Select and reorder columns to match the training data's feature order
+    # Select and reorder columns to match the training data feature order
     try:
         df = df[EXPECTED_FEATURES]
     except KeyError as ke:
@@ -413,11 +412,11 @@ def explain_shap(input_df):
     st.subheader("📊 Model Explanation Report")
     
     try:
-        # === 1. Extract Model Components ===
+        # Extract Model Components 
         preprocessor = model.named_steps['preprocessor']
         regressor = model.named_steps['regressor']
         
-        # === 2. Build Text Feature Dominance Analysis ===
+        # Build Text Feature Dominance Analysis 
         tfidf = preprocessor.named_transformers_['text'].named_steps['tfidf']
         svd = preprocessor.named_transformers_['text'].named_steps['svd']
         
@@ -433,7 +432,7 @@ def explain_shap(input_df):
             # Fallback for non-linear models
             text_dominance = len(text_feature_indices) / len(preprocessor.get_feature_names_out())
         
-        # === 3. SHAP Calculation (for visualization only) ===
+        # SHAP Calculation (for visualization only)
         transformed_input = preprocessor.transform(input_df)
         feature_names = preprocessor.get_feature_names_out()
         explainer = shap.Explainer(regressor, transformed_input)
@@ -441,7 +440,7 @@ def explain_shap(input_df):
         shap_row = shap_values[0]
         tfidf_terms = tfidf.get_feature_names_out()
 
-        # === Generate readable names for text_truncatedsvd features ===
+        # Generate readable names for text_truncatedsvd features 
         svd_feature_map = {}
         for i, component in enumerate(svd.components_):
             top_idxs = component.argsort()[-3:][::-1]
@@ -459,7 +458,7 @@ def explain_shap(input_df):
                 readable_feature_names.append(name.replace("_", " ").title())
 
         
-        # === 4. Generate Stakeholder Summary ===
+        # Generate Stakeholder Summary 
         st.markdown("### 🔍 Model Behavior Summary")
         
         if text_dominance > 0.05:
@@ -479,7 +478,7 @@ def explain_shap(input_df):
                 f"with text descriptions contributing most of the learned patterns."
             )
         
-        # === 5. Text Feature Deep Dive ===
+        # Text Feature Deep Dive 
         st.markdown(f"#### Text Analysis")
         
         # Get top 3 most important text features from model coefficients
@@ -522,7 +521,7 @@ def explain_shap(input_df):
             "are most influential in the model's predictions."
         )
 
-        # === 6. Visualizations ===
+        # Visualizations 
         st.markdown("### Feature Impact Analysis")
         
         # Plot 1: Waterfall Plot
@@ -544,7 +543,7 @@ def explain_shap(input_df):
 
         # Add this right after your SHAP calculation section (after getting shap_row)
 
-        # === Create Top Features Table ===
+        # Create Top Features Table 
         st.markdown("### Top 5 Most Impactful Features")
 
         # Create a DataFrame of feature impacts
@@ -567,7 +566,7 @@ def explain_shap(input_df):
             height=200
         )
         
-        # === 7. Interpretation Guide ===
+        # Interpretation Guide 
         st.markdown("### How to Interpret This")
         st.write("""
         1. **Base Value**: The model's average prediction across all properties
@@ -581,7 +580,7 @@ def explain_shap(input_df):
 
 
 
-# 3. Streamlit UI
+# Streamlit UI
 st.markdown(custom_css, unsafe_allow_html=True) # Inject custom CSS
 
 st.markdown("<h1 style='color:#2E4053; text-align: center;'>London Property Price Estimator (2024)</h1>", unsafe_allow_html=True) 
@@ -675,7 +674,7 @@ if submit:
                     "longitude": loc['longitude'],
                     # Provide a default or more robust way to get district if 'Unknown' is common
                     "district": loc['district'] if loc['district'] != "Unknown" else "CAMDEN", 
-                    "district_price_trend": 500000 # This value is now fixed as per your instruction
+                    "district_price_trend": 500000 # This value is fixed 
                 }
 
                 # Call make_prediction, now returning only the relevant prediction outputs
