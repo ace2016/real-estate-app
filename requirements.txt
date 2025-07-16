@@ -4,7 +4,7 @@ pandas
 matplotlib
 shap
 joblib
-scikit-learn
+scikit-learn==1.5.1
 pgeocode
 geopy
 requests
