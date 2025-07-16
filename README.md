@@ -1,6 +1,6 @@
 # 🏠 London Property Price Prediction App (2025 Edition)
 
-Welcome to a smart, explainable ML-powered real estate valuation app built using **Streamlit**. This app predicts **London property prices** in 2024 using a historical UK housing dataset (1995–1999), adjusted with a 4.2× inflation factor. It combines geolocation, sentiment, description patterns (via NLP), and traditional features to produce an interpretable price prediction.
+Welcome to a smart, explainable ML-powered real estate valuation app built using **Streamlit**. This app predicts **London property prices** in 2024 using a historical UK housing dataset (1995–1999), adjusted with a 4.2x inflation factor. It combines geolocation, sentiment, description patterns (via NLP), and traditional features to produce an interpretable price prediction.
 
 > 🚀 Repo: [github.com/ace2016/real-estate-app](https://github.com/ace2016/real-estate-app)
 ---
@@ -9,11 +9,11 @@ Welcome to a smart, explainable ML-powered real estate valuation app built using
 
 - 🔢 **Price Estimation** based on location, sentiment, property description, and more.
 - 🌐 **Benchmark API Integration** with the UK Property Data API (RapidAPI).
-- 🧠 **SHAP Explainability**: Waterfall plots + Top Feature Contributions, understand what features influenced your prediction..
+- 🧠 **SHAP Explainability**: Waterfall plots + Top Feature Contributions, understand what features influenced your prediction.
 - 📝 **Sentiment Analysis** of descriptions to impact prediction.
 - 📉 **Text & Structured Feature Modeling** with TF-IDF + Truncated SVD.
 - 📍 **Interactive Map View** to visualize the property location.
-- 🧮 **Inflation Adjusted** predictions (×4.2 for 1995–1999 → 2024).
+- 🧮 **Inflation Adjusted** predictions (x4.2 for 1995–1999 to 2024).
 - 📈 **Confidence Intervals** around each prediction.
 - 💡 **Custom CSS styling** for polished UI.
 - ✅ **Fallback Logic** for unknown postcodes or districts.
