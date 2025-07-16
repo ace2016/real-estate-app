@@ -2,9 +2,7 @@
 
 Welcome to a smart, explainable ML-powered real estate valuation app built using **Streamlit**. This app predicts **London property prices** in 2024 using a historical UK housing dataset (1995–1999), adjusted with a 4.2× inflation factor. It combines geolocation, sentiment, description patterns (via NLP), and traditional features to produce an interpretable price prediction.
 
-> 🚀 Live Repo: [github.com/ace2016/real-estate-app](https://github.com/ace2016/real-estate-app)
-
-## **NOTE:** *The model training code is not attached to this repo, I will upload that at a later date. Alongside the enriched dataset of 1M records.*
+> 🚀 Repo: [github.com/ace2016/real-estate-app](https://github.com/ace2016/real-estate-app)
 ---
 
 ## 🔍 Core Features
@@ -79,4 +77,5 @@ pip install -r requirements.txt
 # 4. Run the Streamlit app
 streamlit run app.py
 
-
+```
+### **NOTE:** *The model training code is not attached to this repo, I will upload that at a later date. Alongside the enriched dataset of 1M records.*
