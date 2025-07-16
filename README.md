@@ -30,12 +30,12 @@ Welcome to a smart, explainable ML-powered real estate valuation app built using
 ---
 ### 🗁 Folder structure
 
-├── app.py                      # Main Streamlit application
-├── real_estate_model.pkl       # Trained ML pipeline (preprocessor + model)
-├── district_trends.csv         # Generated using the rolling mean
-├── model_metadata.json         # Inflation factor, expected features, training years
-├── predictions_log.csv         # Auto-generated log of predictions
-├── requirements.txt
+├── app.py                      # Main Streamlit application\
+├── real_estate_model.pkl       # Trained ML pipeline (preprocessor + model)\
+├── district_trends.csv         # Generated using the rolling mean\
+├── model_metadata.json         # Inflation factor, expected features, training years\
+├── predictions_log.csv         # Auto-generated log of predictions\
+├── requirements.txt\
 └── README.md
 
 ---
