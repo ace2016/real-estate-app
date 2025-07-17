@@ -7,5 +7,5 @@ pgeocode==0.3.0
 geopy==2.3.0
 requests==2.31.0
 cloudpickle==2.2.1
-scikit-learn==1.2.2
+scikit-learn==1.5.1
 streamlit==1.35.0
