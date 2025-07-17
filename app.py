@@ -165,6 +165,7 @@ try:
     # as this script or provide the full path.
     with open("real_estate_model.pkl", "rb") as f:
         model = cloudpickle.load(f)
+    st.write("✅ Loaded model type:", type(model))
     with open("model_metadata.json", "r") as f:
         metadata = json.load(f)
 
@@ -683,7 +684,7 @@ if submit:
                 # Call make_prediction, now returning only the relevant prediction outputs
                 y_pred, lower, upper, df_input, _ = make_prediction(input_data) 
 
-                if y_pred:
+                if y_pred is not None::
                     # Benchmarking using UK Property Data API
                     benchmark_price, uk_property_data_debug_messages = get_uk_property_data_benchmark(postcode, house_number_name)
 
