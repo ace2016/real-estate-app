@@ -519,7 +519,7 @@ def explain_shap(input_df):
 
         st.markdown("#### What This Means")
         st.write(
-            f"Properties containing phrases like \"{'", "'.join(text_patterns[top_text_features[0]]['keywords'])}\" "
+            f'Properties containing phrases like "{", ".join(text_patterns[top_text_features[0]]["keywords"])}" '
             "are most influential in the model's predictions."
         )
 
