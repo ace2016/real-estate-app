@@ -264,7 +264,7 @@ def analyze_sentiment(text):
     Assigns a score and a sentiment label.
     """
     text = text.lower()
-    positive_keywords = ['luxury', 'spacious', 'modern', 'bright', 'excellent', 'stunning', 'beautiful', 'generous', 'well-maintained', 'desirable', 'prime', 'fantastic', 'convenient', 'ideal', 'charming', 'immaculate', 'vibrant', 'quiet', 'peaceful', 'secure', 'newly renovated', 'high specification']
+    positive_keywords = ['luxury', 'spacious', 'modern', 'bright', 'boasting', 'sweeping city views', 'nice views', 'excellent', 'stunning', 'beautiful', 'generous', 'well-maintained', 'desirable', 'prime', 'fantastic', 'convenient', 'ideal', 'charming', 'immaculate', 'vibrant', 'quiet', 'peaceful', 'secure', 'newly renovated', 'high specification']
     negative_keywords = ['small', 'cramped', 'dated', 'noisy', 'needs work', 'basic', 'limited', 'compact', 'requires renovation', 'overlooked']
 
     pos_count = sum(text.count(word) for word in positive_keywords)
