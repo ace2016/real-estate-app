@@ -7,6 +7,7 @@ import json
 import pgeocode
 import matplotlib.pyplot as plt
 import requests
+import cloudpickle
 from datetime import datetime
 from geopy.distance import geodesic
 from shap import explainers
@@ -162,7 +163,8 @@ custom_css = """
 try:
     # Ensure 'real_estate_model.pkl' and 'model_metadata.json' are in the same directory
     # as this script or provide the full path.
-    model = joblib.load("real_estate_model.pkl")
+    with open("real_estate_model.pkl", "rb") as f:
+        model = cloudpickle.load(f)
     with open("model_metadata.json", "r") as f:
         metadata = json.load(f)
 
