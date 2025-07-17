@@ -364,7 +364,7 @@ def make_prediction(input_data: dict):
         return None, None, None, None, None # Return sentiment_label as well
 
     try:
-        print("DEBUG: model type =>", type(model))
+        st.write("DEBUG: model type =>", type(model))
         log_pred = model.predict(df)[0]
         pred_price = np.exp(log_pred) * INFLATION_FACTOR
         lower, upper = pred_price * 0.85, pred_price * 1.15 # 15% confidence interval
