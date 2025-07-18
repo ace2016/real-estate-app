@@ -583,7 +583,7 @@ def explain_shap(input_df):
 st.markdown(custom_css, unsafe_allow_html=True) # Inject custom CSS
 
 st.markdown("<h1 style='color:#2E4053; text-align: center;'>London Property Price Estimator (2024)</h1>", unsafe_allow_html=True) 
-st.caption(f"Smart valuation using historical UK housing data ({TRAINING_YEARS}) adjusted for 2024 using inflation and market trends.")
+st.caption(f"Smart valuation using historical UK housing data ({TRAINING_YEARS}) adjusted for 2024 using inflation and market trends. By using this product, you give consent to use the information in order to improve the application, according to <a href='https://gdpr-info.eu/'>GDPR</a>")
 
 # Initialize session state for manual_description if not already set
 if "manual_description_text" not in st.session_state:
